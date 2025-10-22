@@ -127,6 +127,22 @@ def update_layout(fig: go.Figure, title: str):
         legend=dict(orientation="h", yanchor="bottom", y=-0.25, xanchor="center", x=0.5)
     )
 
+    # Add horizontal watermark - 15% larger
+    fig.add_annotation(
+        text="korlabs",
+        xref="paper", yref="paper",
+        x=0.5, y=0.5,
+        xanchor="center", yanchor="middle",
+        showarrow=False,
+        font=dict(
+            family="Source Code Pro, monospace",
+            size=42,  # 15% larger than 36px (36 * 1.15 = 41.4, rounded to 42)
+            color="rgba(37, 37, 37, 0.3)",  # More visible color
+        ),
+        textangle=0,  # Horizontal watermark
+        opacity=0.3  # More visible
+    )
+
     return fig
 
 
@@ -229,7 +245,7 @@ if __name__ == "__main__":
 
     # Export examples
     print("📸 Testing PNG export functions:")
-    export_png_web_quality(fig, "commits_web_quality")
+    export_png(fig, "commits_web_quality", scale=2.0)
     export_png_high_quality(fig, "commits_custom", width=1600, height=1000, scale=2.5)
 
     fig.show()
