@@ -151,7 +151,7 @@ def export_png_high_quality(
     filename: str,
     width: int = 1200,
     height: int = 800,
-    scale: float = 2.0,
+    scale: float = 1.0,
 ):
     """
     Export Plotly figure as high-quality PNG while preserving all custom styling
@@ -181,7 +181,6 @@ def export_png_high_quality(
         height=height,
         scale=scale,
         format="png",
-        engine="kaleido",
     )
 
     return str(file_path)
@@ -244,8 +243,7 @@ if __name__ == "__main__":
     )
 
     # Export examples
-    print("📸 Testing PNG export functions:")
-    export_png(fig, "commits_web_quality", scale=2.0)
-    export_png_high_quality(fig, "commits_custom", width=1600, height=1000, scale=2.5)
+    export_png(fig, "_test", width=1600, height=700, scale=1)
+    # export_png_high_quality(fig, "commits_custom", width=1600, height=1000, scale=2.5)
 
-    fig.show()
+    # fig.show()
